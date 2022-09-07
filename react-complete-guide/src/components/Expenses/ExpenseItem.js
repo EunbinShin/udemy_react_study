@@ -10,10 +10,6 @@ function ExpenseItem(props){
     const expenseDate = props.date;
     const expenseAmount =  props.amount;
 
-    const clcikHandler = () => {
-        setTitle('Updated !!!')
-    }
-
     return (
         <Card className='expense-item'>
             <ExpenseDate date={expenseDate}/>
@@ -21,7 +17,6 @@ function ExpenseItem(props){
                 <h2>{title}</h2>
                 <div className='expense-item__price'>${expenseAmount}</div>
             </div>
-            <button onClick={clcikHandler}>Change Title</button>
         </Card>
     )
 }
