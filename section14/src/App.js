@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
@@ -31,7 +31,7 @@ function App() {
   */
 
   //비동기 코드
-  async function fetchMoviesHandler() {
+  const  fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true)
     setError(null) // error reset
     
@@ -56,7 +56,11 @@ function App() {
       setError(error.message)
     }
     setIsLoading(false)
-  }
+  }, [])
+
+  useEffect(()=>{
+    fetchMoviesHandler()
+  }, [fetchMoviesHandler])
 
   let content = <p>Found no movies.</p>
 
